@@ -17,7 +17,6 @@ import java.time.*;
 
 public class Botex {
     public static String prefix;
-    public Main main;
     private JDA jda;
     private BotexListener listener;
     private PropertiesManager propertiesManager;
@@ -26,8 +25,7 @@ public class Botex {
     private final String[] channelNames = {"-reglas"};
     private final ArrayList<TextChannel> channels = new ArrayList<>();
 
-    public Botex(Main main, String key) {
-        this.main = main;
+    public Botex() {
         this.propertiesManager = new PropertiesManager();
         this.propertiesManager.load(new File("botex.properties"));
 
