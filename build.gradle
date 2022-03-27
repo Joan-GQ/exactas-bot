@@ -29,6 +29,10 @@ dependencies {
     // https://github.com/DV8FromTheWorld/JDA
     implementation group: 'net.dv8tion', name:'JDA', version:'4.4.0_350'
 
+    compileOnly group: 'org.slf4j', name:'slf4j-api', version: '1.7.25'
+
+    implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2'
+
 }
 
 test {
@@ -46,6 +50,15 @@ shadowJar {
         inheritFrom project.tasks.jar.manifest
     }
 
-    relocate 'org.apache.commons', 'me.joan.org.apache.commons'
-    relocate 'net.dv8tion', 'me.joan.net.dv8tion'
+    relocate "net.dv8tion.jda", "${project.group}.relocated.jda"
+    relocate "gnu.trove", "${project.group}.relocated.gnu.trove"
+    relocate "org.apache.commons", "${project.group}.relocated.org.apache.commons.collections4"
+    relocate "okhttp", "${project.group}.relocated.okhttp"
+    relocate "com.neovisionaries", "${project.group}.relocated.com.neovisionaries"
+    //relocate "org.slf4j", "${project.group}.relocated.org.slf4j"
+    relocate "okio", "${project.group}.relocated.okio"
+    relocate "kotlin", "${project.group}.relocated.kotlin"
+    relocate "org.intellij", "${project.group}.relocated.org.intellij"
+    relocate "org.jetbrains", "${project.group}.relocated.org.jetbrains"
+    relocate "com.fasterxml", "${project.group}.relocated.com.fasterxml"
 }

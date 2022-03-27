@@ -7,8 +7,9 @@ import net.dv8tion.jda.api.events.*;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.*;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.LoggerFactory;
 
 public class BotexListener extends ListenerAdapter {
     private final CommandManager commandManager;
@@ -16,13 +17,13 @@ public class BotexListener extends ListenerAdapter {
 
     public BotexListener(CommandManager commandManager) {
         this.commandManager = commandManager;
-        this.LOGGER = Main.LOGGER;
+        this.LOGGER = LoggerFactory.getLogger(this.getClass());
     }
 
     @Override
     public void onReady(@NotNull ReadyEvent event) {
         super.onReady(event);
-        this.LOGGER.info(String.format("[Botyta] Logged as %#s", event.getJDA().getSelfUser()));
+        System.out.println(String.format("[BotEx] Logged as %#s", event.getJDA().getSelfUser()));
     }
 
     @Override
@@ -37,7 +38,7 @@ public class BotexListener extends ListenerAdapter {
         String messageRaw = message.getContentRaw();
 
         if(messageRaw.startsWith(Botex.prefix)) {
-            this.LOGGER.info("[Botyta] Discord issued server command "+ messageRaw);
+            System.out.println("[BotEx] Discord issued server command "+ messageRaw);
             commandManager.handleMessageCommand(event);
         } else {
 

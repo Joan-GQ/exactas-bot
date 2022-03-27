@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 
 import java.util.*;
 import java.util.regex.Pattern;
@@ -80,7 +80,7 @@ public class CommandManager {
             guildMessageCommands.get(invoke).handle(event, args);
         } else {
             if(logger != null)
-                logger.info("[Botyta] "+guild.getName()+":"+channel.getName()+"."+author.getName());
+                System.out.println("[BotEx] "+guild.getName()+":"+channel.getName()+"."+author.getName());
         }
     }
 
@@ -90,7 +90,7 @@ public class CommandManager {
             guildSlashCommands.get(commandName).handle(event);
         } else {
             if(logger != null)
-                logger.info("[Botyta] Unknown slash command "+commandName);
+                System.out.println("[BotEx] Unknown slash command "+commandName);
         }
     }
 }

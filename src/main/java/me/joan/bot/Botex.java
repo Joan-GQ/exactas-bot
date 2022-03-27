@@ -65,7 +65,9 @@ public class Botex {
             }
         }
 
-        Main.LOGGER.info(Collections.singletonList(channels));
+        //Main.LOGGER.info(Collections.singletonList(channels));
+        System.out.println("[BotEx] Starting!");
+        System.out.println("[BotEx] Prefix is "+Botex.prefix);
     }
 
     public void disableBot() {
