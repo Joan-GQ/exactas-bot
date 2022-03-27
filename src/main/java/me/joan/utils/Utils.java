@@ -2,6 +2,7 @@ package me.joan.utils;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
@@ -9,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Utils {
+
+    /* ------------------------------------------------------------------------------------ */
+
     private static final DecimalFormat TIME_FORMATTER = new DecimalFormat("########0.000");
 
     public static boolean stringContainsItemFromList(String inputStr, String[] items) {

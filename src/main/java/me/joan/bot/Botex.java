@@ -32,7 +32,7 @@ public class Botex {
         Botex.prefix = this.propertiesManager.getProperty("prefix");
         Botex.prefix = Utils.toUTF(Botex.prefix);
 
-        this.commandManager = new CommandManager();
+        this.commandManager = new CommandManager(this);
         this.listener = new BotexListener(this.commandManager);
         this.startBot(propertiesManager.getProperty("api"));
     }
@@ -45,7 +45,8 @@ public class Botex {
 
         try {
             jda = builder.build();
-            jda.upsertCommand("ping","Will return Pong! with the milisecond delay of the bot").queue();
+            jda.upsertCommand("ping","Devuelve 'Pong!' junto con " +
+                    "el tiempo en milisegundos que haya tardado en responder el bot").queue();
         } catch (LoginException logex) {
             logex.printStackTrace();
         }

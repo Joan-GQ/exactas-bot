@@ -21,7 +21,11 @@ public class CommandManager {
     private final Map<String, IGuildSlashCommand> guildSlashCommands = new HashMap<>();
     Logger logger;
 
-    public CommandManager() {
+    public CommandManager(Botex botex) {
+        addMessageCommand(new BotShutdownCommand(botex));
+        addMessageCommand(new BotHelpCommand(this));
+        addMessageCommand(new BotRulesCommand());
+        addMessageCommand(new BotResourcesCommand());
         addMessageCommand(new BotPingCommand());
         addSlashCommand(new BotPingCommand());
         this.logger = Main.LOGGER;
@@ -33,7 +37,7 @@ public class CommandManager {
         }
     }
 
-    public Collection<IGuildMessageCommand> getIGuildMessageCommands() {
+    public Collection<IGuildMessageCommand> getGuildMessageCommands() {
         return guildMessageCommands.values();
     }
 
